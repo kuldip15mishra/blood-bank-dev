@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+        <script type = "text/javascript" src = "blood-bank.component.ts"></script>
+</head>
+<body>
+            
+        
+             <!-- <button class="btn new" id = "button1" (click)=showbloodbankdata()>Retreive Data</button> -->
+
+            
+             <button class="btn old" id = "button2" (click)=getbloodbankdata()>Edit data</button>
+
+             <!-- <button class="btn old" id = "button3" (click)=postbloodbankdata()>Add data</button>
+
+             <button class="btn old" id = "button4" (click)=deleteall()>delete all</button> -->
+
+             <!-- <select name="select_bloodbank" *ngIf="showForm" (change)="selectChange($event)">
+                    <option *ngFor="let item of bloodbanks" value="{{item._id}}">{{ item.Name }}</option>
+                </select> -->
+                <form *ngIf="showForm" (submit)="$event.preventDefault(); onFormSubmit($event)">
+                                    
+                   
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="bloodbank.name" class="form-control" id="name" 
+                        placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="bloodbank.address" class="form-control" id="Address" 
+                        placeholder="Address">
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="Apos" class="col-sm-2 col-form-label">Apos</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="bloodbank.Apos" class="form-control" id="Apos" 
+                        placeholder="Apos">
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="Aminus" class="col-sm-2 col-form-label">Aminus</label>
+                        <div class="col-sm-3">
+                        <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="bloodbank.Aminus" class="form-control" id="Aminus" 
+                        placeholder="Aminus">
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="Bpos" class="col-sm-2 col-form-label">Bpos</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="bloodbank.Bpos" class="form-control" id="Bpos" 
+                        placeholder="Bpos">
+                    </div>
+                </div>
+                <div class="form-group row">
+                        <label for="Bminus" class="col-sm-2 col-form-label">Bminus</label>
+                        <div class="col-sm-3">
+                        <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="bloodbank.Bminus" class="form-control" id="Bminus" 
+                        placeholder="Bminus">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                        <label for="ABpos" class="col-sm-2 col-form-label">ABpos</label>
+                        <div class="col-sm-3">
+                        <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="bloodbank.ABpos" class="form-control" id="ABpos" 
+                        placeholder="ABpos">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                        <label for="ABminus" class="col-sm-2 col-form-label">ABminus</label>
+                        <div class="col-sm-3">
+                        <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="bloodbank.ABminus" class="form-control" id="ABminus" 
+                        placeholder="ABminus">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                        <label for="Opos" class="col-sm-2 col-form-label">Opos</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="bloodbank.Opos" class="form-control" id="Opos" 
+                        placeholder="Opos">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                        <label for="Ominus" class="col-sm-2 col-form-label">Ominus</label>
+                        <div class="col-sm-3">
+                        <input type="text" [ngModelOptions]="{standalone: true}"   [(ngModel)]="bloodbank.Ominus" class="form-control" id="Ominus" 
+                        placeholder="Ominus">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                        <label for="_id" class="col-sm-2 col-form-label">_id</label>
+                        <div class="col-sm-3">
+                        <input type="hidden" [ngModelOptions]="{standalone: true}"  [(ngModel)]="bloodbank._id" class="form-control" id="_id" 
+                        placeholder="_id">
+                    </div>
+                </div> 
+                
+                <button>Update</button>
+                   
+                </form>
+    
+                <!-- <select name="view_bloodbank" *ngIf="showbloodbankDetails" (change)="selectDetailChange($event)">
+                    <option *ngFor="let item of bloodbanks" value="{{item._id}}">{{ item.Name }}</option>
+                </select> -->
+                <div *ngIf="showbloodbank">
+                    <div *ngFor="let item of bloodbanks">
+                        <div *ngIf="item._id == activebloodbankId">
+                            <p><b>Name:</b> {{ item.name }}</p>
+                            <p><b>Address:</b> {{ item.address }}</p><br/>
+                            <p><b>A+:</b> {{ item.Apos }}</p><br/>
+                            <p><b>B+:</b> {{ item.Bpos }}</p><br/>
+                            <p><b>O+:</b> {{ item.Opos }}</p><br/>
+                            <p><b>AB+:</b> {{ item.ABpos }}</p><br/>
+                            <p><b>A-:</b> {{ item.Aminus }}</p><br/>
+                            <p><b>B-:</b> {{ item.Bminus }}</p><br/>
+                            <p><b>O-:</b> {{ item.Ominus }}</p><br/>
+                            <p><b>AB-:</b> {{ item.ABminus }}</p><br/>
+                        </div>
+                    </div>
+                </div>
+             
+
+</body>
+</html>

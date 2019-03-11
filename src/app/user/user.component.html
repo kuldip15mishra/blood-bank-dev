@@ -1,0 +1,124 @@
+<h1>User Profile Data</h1>
+<div class="row">
+<div *ngIf="currentUserProfile" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<p><span><Strong>Name:</Strong>{{currentUserProfile.name}}</span></p>
+<p><span><Strong>Email:</Strong>{{currentUserProfile.email}}</span></p>
+<p><span><Strong>Blood Group:</Strong>{{currentUserProfile.bloodGroup}}</span></p>
+<p><span><Strong>Phone Number:</Strong>{{currentUserProfile.phonenumber}}</span></p>
+<p><span><Strong>Address:</Strong>{{currentUserProfile.address}}</span></p>
+<p><span><Strong>Age:</Strong>{{currentUserProfile.age}}</span></p>
+<p><span><Strong>State:</Strong>{{currentUserProfile.state}}</span></p>
+<p><span><Strong>Zip:</Strong>{{currentUserProfile.zip}}</span></p>
+</div>
+<div  class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+<button class="btn btn-secondary contnueButton" (click)="OpenEmergencyModal()">Add an Emergency Contact</button>
+<button class="btn btn-secondary contnueButton" (click)="OpenSameBLoodModal()">Add a person with same blood group</button>
+</div>
+</div>
+<div *ngIf="relativeModal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+
+        <div class="modal-dialog modal-dialog-centered " role="document">
+
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">Add a relative</h5>
+                        </div>
+
+                        <div class="modal-body  container">
+
+                                <form [formGroup]="relativeForm">
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" class="form-control" formControlName="email"
+                                                                placeholder="Email">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputName">Name</label>
+                                                        <input type="text" class="form-control" formControlName="name"
+                                                                placeholder="Name">
+                                                </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputphoneNumber">Phone Number</label>
+                                                        <input type="text" class="form-control" formControlName="phonenumber"
+                                                                id="inputphoneNumber">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputage">Age</label>
+
+                                                        <input type="text" class="form-control" formControlName="age"
+                                                                id="inputage">
+                                                </div>
+                                              
+                                        </div>
+                            
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary contnueButton" (click)="submitrelativeForm(relativeForm.value)">Submit</button>
+                                        </div>
+                                </form>
+                       
+                        </div>
+                </div>
+
+
+        </div>
+
+</div>
+<div *ngIf="sameBloodModal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+
+        <div class="modal-dialog modal-dialog-centered " role="document">
+
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">Add a relative</h5>
+                        </div>
+
+                        <div class="container modal-body ">
+  
+                                              
+                                <form [formGroup]="emergencyForm">
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" class="form-control" formControlName="email"
+                                                                placeholder="Email">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputName">Name</label>
+                                                        <input type="text" class="form-control" formControlName="name"
+                                                                placeholder="Name">
+                                                </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputphoneNumber">Phone Number</label>
+                                                        <input type="text" class="form-control" formControlName="phonenumber"
+                                                                id="inputphoneNumber">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputage">Age</label>
+
+                                                        <input type="text" class="form-control" formControlName="age"
+                                                                id="inputage">
+                                                </div>
+                                              
+                                        </div>
+                            
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary contnueButton" (click)="submitEmergencyForm(emergencyForm.value)">Submit</button>
+                                        </div>
+                                </form>
+                           
+                        </div>
+                </div>
+
+
+        </div>
+
+</div>

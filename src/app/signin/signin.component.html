@@ -1,0 +1,325 @@
+<div class="row  login-container">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div  class="col-lg-12 col-sm-12 col-md-12 col-xs-12" style="text-align:right">
+
+                        <h1 class="backgroundLine">Your 15 MINS <br> for One pint<br> can
+                                <br><span class="font-italic"> SAVE THREE LIVES </span></h1>
+                                
+                        </div>
+        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12" style="text-align:center">
+                <button (click)="socialSignIn()" class="btn signInButton">
+                        <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                        Sign up / Sign in with Google</button>
+        </div>
+
+       
+                
+</div>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+        <div class="row">
+                <img src="./../../assets/images/background.png" alt="" class="backgroundImg" >
+    
+</div>
+</div>
+
+</div>
+
+<div *ngIf=roleModal class="modal  show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+     
+
+        <div class="modal-dialog modal-dialog-centered " role="document">
+                <div class="modal-content">
+                     
+                        <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">We need Some more information to
+                                        complete your Registration</h5>
+                        </div>
+                        <div class="modal-body row">
+                             
+                                               
+                                                    
+                                <form [formGroup]=registerForm class="container">
+                                        <div class="form-group row">
+                                                <h5>Who are you??</h5>
+                                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                        <label>
+                                                                <input type="radio" value="hospitalManager"
+                                                                        formControlName=roletype />
+                                                                <span>Hospital Manager</span> </label>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                        <label>
+                                                                <input type="radio" formControlName=roletype value="bloodBankManager" />
+                                                                <span>Blood Bank Manager </span></label>
+                                                </div>
+                                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                                        <label>
+                                                                <input type="radio" formControlName=roletype value="commonUser" />
+                                                                <span> General User </span></label>
+                                                </div>
+                                        </div>
+                                </form>
+                             
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary contnueButton" (click)="submitUserRole(registerForm.value.roletype)">Continue</button>
+                        </div>
+                </div>
+        </div>
+</div>
+
+
+<div *ngIf="userModal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+
+        <div class="modal-dialog modal-dialog-centered mapModal" role="document">
+
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">Please Complete this Form</h5>
+                        </div>
+
+                        <div class="modal-body row">
+                                        <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                                                        <agm-map [latitude]="lat" [longitude]="lng">
+                                                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                                        </agm-map>
+                                                        <span ><strong>Latitude : </strong>  {{lat}}</span><br>
+                                                        <span ><strong>Longitude : </strong>  {{lng}}</span>
+                                                </div>
+                                                <div class="col-lg-8 col-sm-12 col-md-8 col-xs-12">
+                                <form [formGroup]="userInfoForm">
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" class="form-control" formControlName="email"
+                                                                placeholder="Email">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputName">Name</label>
+                                                        <input type="text" class="form-control" formControlName="name"
+                                                                placeholder="Name">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputAddress">Address</label>
+                                                <input type="text" class="form-control" id="inputAddress"
+                                                        formControlName="address" placeholder="1234 Main St">
+                                        </div>
+                                        <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputphoneNumber">Phone Number</label>
+                                                        <input type="text" class="form-control" formControlName="phonenumber"
+                                                                id="inputphoneNumber">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputage">Age</label>
+
+                                                        <input type="text" class="form-control" formControlName="age"
+                                                                id="inputage">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputBG">Blood Group</label>
+                                                        <select id="inputBG" class="form-control" formControlName="bloodGroup">
+                                                                <option selected>Blood group</option>
+                                                                <option value="o+">O +ve</option>
+                                                                <option value="o-">O -ve</option>
+                                                                <option value="a+">A +ve</option>
+                                                                <option value="a-">A -ve</option>
+                                                                <option value="b+">B +ve</option>
+                                                                <option value="b-">B -ve</option>
+                                                                <option value="ab+">AB +ve</option>
+                                                                <option value="ab-">AB -ve</option>
+                                                        </select>
+                                                </div>
+                                        </div>
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputCity">City</label>
+                                                        <input type="text" class="form-control" formControlName="city"
+                                                                id="inputCity">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputState">State</label>
+
+                                                        <input type="text" class="form-control" formControlName="state"
+                                                                id="inputState">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label for="inputZip">Zip</label>
+                                                        <input type="text" class="form-control" formControlName="zip"
+                                                                id="inputZip">
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary contnueButton" (click)="submitUserForm(userInfoForm.value)">Submit</button>
+                                        </div>
+                                </form>
+                                </div>
+                        </div>
+                </div>
+
+
+        </div>
+
+</div>
+
+
+
+
+
+<div *ngIf="bloodbankmodal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+
+        <div class="modal-dialog modal-dialog-centered mapModal" role="document">
+
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h5 class="modal-title " id="exampleModalLongTitle">Please fill in your Blood Bank
+                                        Details</h5>
+                        </div>
+
+                        <div class="modal-body row" >
+                                        <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                                                        <agm-map [latitude]="lat" [longitude]="lng">
+                                                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                                        </agm-map>
+                                                        <span ><strong>Latitude : </strong>  {{lat}}</span><br>
+                                                        <span ><strong>Longitude : </strong>  {{lng}}</span>
+                                                </div>
+                                                <div class="col-lg-8 col-sm-12 col-md-8 col-xs-12">
+                                <form [formGroup]="bloodbankform">
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        <input type="email" class="form-control" formControlName="email"
+                                                                placeholder="Email">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputName">Name</label>
+                                                        <input type="text" class="form-control" formControlName="name"
+                                                                placeholder="Name">
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputAddress">Address</label>
+                                                <input type="text" class="form-control" id="inputAddress"
+                                                        formControlName="address" placeholder="1234 Main St">
+                                        </div>
+                                        <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputphoneNumber">Phone Number</label>
+                                                        <input type="text" class="form-control" formControlName="phonenumber"
+                                                                id="inputphoneNumber">
+                                                </div>
+
+                                        </div>
+                                        <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                        <label for="inputCity">City</label>
+                                                        <input type="text" class="form-control" formControlName="city"
+                                                                id="inputCity">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                        <label for="inputState">State</label>
+
+                                                        <input type="text" class="form-control" formControlName="state"
+                                                                id="inputState">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label for="inputZip">Zip</label>
+                                                        <input type="text" class="form-control" formControlName="zip"
+                                                                id="inputZip">
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary contnueButton" (click)="submitBloodBankform(bloodbankform.value)">Submit</button>
+                                        </div>
+                                </form>
+                                </div>
+
+                        </div>
+                </div>
+
+
+        </div>
+
+</div>
+
+<div *ngIf="hospitalModal" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true" style="display:block">
+        <div class="modal-dialog modal-dialog-centered mapModal" role="document">
+
+                        <div class="modal-content">
+                                <div class="modal-header">
+     
+                        <h5 class="modal-title " id="exampleModalLongTitle">Please fill in your Hospital Details</h5>
+                </div>
+
+                <div class="modal-body row">
+                        <div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+                                        <agm-map [latitude]="lat" [longitude]="lng">
+                                                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                        </agm-map>
+                                        <span ><strong>Latitude : </strong>  {{lat}}</span><br>
+                                        <span ><strong>Longitude : </strong>  {{lng}}</span>
+                                </div>
+                                <div class="col-lg-8 col-sm-12 col-md-8 col-xs-12">
+                        <form [formGroup]="hospitalform">
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Email</label>
+                                                <input type="email" class="form-control" formControlName="email"
+                                                        placeholder="Email">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                                <label for="inputName">Name</label>
+                                                <input type="text" class="form-control" formControlName="name"
+                                                        placeholder="Name">
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <label for="inputAddress">Address</label>
+                                        <input type="text" class="form-control" id="inputAddress" formControlName="address"
+                                                placeholder="1234 Main St">
+                                </div>
+                                <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                                <label for="inputphoneNumber">Phone Number</label>
+                                                <input type="text" class="form-control" formControlName="phonenumber"
+                                                        id="inputphoneNumber">
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="inputAmbulanceNumber">Number of Ambulances Available</label>
+                                                <input type="text" class="form-control" formControlName="AmbulanceNumber"
+                                                        id="inputAmbulanceNumber">
+                                        </div>
+                                </div>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                                <label for="inputCity">City</label>
+                                                <input type="text" class="form-control" formControlName="city" id="inputCity">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                                <label for="inputState">State</label>
+
+                                                <input type="text" class="form-control" formControlName="state" id="inputState">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                                <label for="inputZip">Zip</label>
+                                                <input type="text" class="form-control" formControlName="zip" id="inputZip">
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary contnueButton" (click)="submitHositalform(hospitalform.value)">Submit</button>
+                                </div>
+                        </form>
+                        </div>
+                        </div>
+                </div>
+        </div>
+
+
+</div>

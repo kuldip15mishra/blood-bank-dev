@@ -1,0 +1,117 @@
+
+             <!-- <button class="btn new" id = "button1" (click)=showhospitaldata()>Retreive Data</button> -->
+
+            
+             <button class="btn old" id = "button2" (click)=gethospitaldata()>Edit data</button>
+
+             <!-- <button class="btn old" id = "button3" (click)=posthospitaldata()>Add data</button>
+
+             <button class="btn old" id = "button4" (click)=deleteall()>delete all</button> -->
+
+             <!-- <select name="select_hospital" *ngIf="showForm" (change)="selectChange($event)">
+             
+                    <option *ngFor="let item of hospitals" value="{{item._id}}">{{ item.name }}</option>
+                </select> -->
+                <form *ngIf="showForm" (submit)="$event.preventDefault(); onFormSubmit($event)">
+                  
+                    <div class="form-group row">
+                            <label for="name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="hospital.name" class="form-control" id="name" 
+                            placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="address" class="col-sm-2 col-form-label">Address</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="hospital.address" class="form-control" id="Address" 
+                            placeholder="Address">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="Apos" class="col-sm-2 col-form-label">Apos</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="hospital.Apos" class="form-control" id="Apos" 
+                            placeholder="Apos">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="Aminus" class="col-sm-2 col-form-label">Aminus</label>
+                            <div class="col-sm-3">
+                            <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="hospital.Aminus" class="form-control" id="Aminus" 
+                            placeholder="Aminus">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="Bpos" class="col-sm-2 col-form-label">Bpos</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="hospital.Bpos" class="form-control" id="Bpos" 
+                            placeholder="Bpos">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="Bminus" class="col-sm-2 col-form-label">Bminus</label>
+                            <div class="col-sm-3">
+                            <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="hospital.Bminus" class="form-control" id="Bminus" 
+                            placeholder="Bminus">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                            <label for="ABpos" class="col-sm-2 col-form-label">ABpos</label>
+                            <div class="col-sm-3">
+                            <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="hospital.ABpos" class="form-control" id="ABpos" 
+                            placeholder="ABpos">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                            <label for="ABminus" class="col-sm-2 col-form-label">ABminus</label>
+                            <div class="col-sm-3">
+                            <input type="text"  [ngModelOptions]="{standalone: true}" [(ngModel)]="hospital.ABminus" class="form-control" id="ABminus" 
+                            placeholder="ABminus">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                            <label for="Opos" class="col-sm-2 col-form-label">Opos</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="hospital.Opos" class="form-control" id="Opos" 
+                            placeholder="Opos">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                            <label for="Ominus" class="col-sm-2 col-form-label">Ominus</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"   [(ngModel)]="hospital.Ominus" class="form-control" id="Ominus" 
+                            placeholder="Ominus">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                            <label for="_id" class="col-sm-2 col-form-label">_id</label>
+                            <div class="col-sm-3">
+                            <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="hospital._id" class="form-control" id="_id" 
+                            placeholder="_id">
+                        </div>
+                    </div> 
+                    
+                    <button>Update</button>
+                </form>
+    
+                <!-- <select name="view_hospital" *ngIf="showHospitalDetails" (change)="selectDetailChange($event)">
+                    <option *ngFor="let item of hospitals" value="{{item._id}}">{{ item.name }}</option>
+                </select> -->
+                <div *ngIf="showHospital">
+                    <div *ngFor="let item of hospitals">
+                        <div *ngIf="item._id == activeHospitalId">
+                            <p><b>Name:</b> {{ item.name }}</p>
+                            <p><b>Address:</b> {{ item.address }}</p>
+                            <p><b>A+:</b> {{ item.Apos }}</p>
+                            <p><b>B+:</b> {{ item.Bpos }}</p>
+                            <p><b>O+:</b> {{ item.Opos }}</p>
+                            <p><b>AB+:</b> {{ item.ABpos }}</p>
+                            <p><b>A-:</b> {{ item.Aminus }}</p>
+                            <p><b>B-:</b> {{ item.Bminus }}</p>
+                            <p><b>O-:</b> {{ item.Ominus }}</p>
+                            <p><b>AB-:</b> {{ item.ABminus }}</p>
+                        </div>
+                    </div>
+                </div>
+             

@@ -1,0 +1,42 @@
+.login-container{
+    margin-top:80px;
+}
+agm-map {
+    height: 300px;
+    margin-top:30px;
+    width:300px !important;
+  }
+  
+  .backgroundImg{
+      height:300px;
+      margin-left:50px;
+      width: 400px;
+  }
+  .backgroundLine{
+      margin-top:30px;
+      color: rgba(156, 20 , 28,1);
+      font-family:Roboto;
+      font-size:56px;
+      font-weight:700;
+  }
+  .signInButton {
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #9c141c;
+    color:rgba(156, 20 , 28,1);
+    font-weight: 500;
+  }
+  
+.contnueButton
+{
+background: #9c141c;
+color: #fff;
+}
+
+.appTextColor{
+    color: #9c141c;
+}
+
+.mapModal{
+    max-width: 950px!important
+}
